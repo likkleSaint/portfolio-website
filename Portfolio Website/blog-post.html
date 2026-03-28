@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog Post — Amenyo A. Akeseh</title>
+  <meta name="description" content="Blog post by Amenyo Ammishaddai Akeseh." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────── -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">AA</a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a href="goals.html">Goals</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀️</button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Page Content ────────────────────────────────────── -->
+  <div class="page">
+    <div class="container">
+      <div class="post-container">
+
+        <a href="blog.html" class="post-back">← Back to Blog</a>
+
+        <div class="post-header" id="post-header">
+          <div class="skeleton" style="min-height:120px"></div>
+        </div>
+
+        <div class="post-body" id="post-body">
+          <div class="skeleton" style="min-height:300px"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 Amenyo Ammishaddai Akeseh</span>
+      <div class="footer-links">
+        <a href="https://github.com/likkleSaint" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/amenyo-akeseh-9911b1350" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:amenyoakese99@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const params = new URLSearchParams(window.location.search);
+      const postId = params.get('id');
+      const posts = await loadJSON('data/posts.json');
+      renderBlogPost(posts, postId);
+    });
+  </script>
+</body>
+</html>

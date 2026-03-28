@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Goals — Amenyo A. Akeseh</title>
+  <meta name="description" content="Personal goal tracker and accountability calendar by Amenyo Ammishaddai Akeseh." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────── -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">AA</a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a href="goals.html">Goals</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀️</button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Page Content ────────────────────────────────────── -->
+  <div class="page">
+    <div class="container">
+
+      <!-- Page Title -->
+      <div class="page-title fade-in">
+        <h1>Goal Tracker</h1>
+        <p>Set daily goals, stay accountable, and track your progress over time.</p>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="stats-row" id="goal-stats">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Main Layout: Calendar + Tasks -->
+      <div class="goals-layout">
+
+        <!-- Calendar Panel -->
+        <div class="card calendar-panel fade-in">
+          <div class="cal-header">
+            <button class="cal-nav-btn" onclick="GoalsApp.prevMonth()" aria-label="Previous month">‹</button>
+            <div class="cal-header-center">
+              <h3 id="calendar-month">March 2026</h3>
+              <button class="cal-today-btn" onclick="GoalsApp.goToToday()">Today</button>
+            </div>
+            <button class="cal-nav-btn" onclick="GoalsApp.nextMonth()" aria-label="Next month">›</button>
+          </div>
+          <div class="cal-grid" id="calendar-grid">
+            <!-- Populated by JS -->
+          </div>
+          <div class="cal-legend">
+            <span><span class="legend-dot legend-complete"></span> All done</span>
+            <span><span class="legend-dot legend-partial"></span> In progress</span>
+            <span><span class="legend-dot legend-pending"></span> Pending</span>
+          </div>
+        </div>
+
+        <!-- Tasks Panel -->
+        <div class="tasks-panel fade-in">
+          <div class="card" style="margin-bottom:16px">
+            <h3 id="selected-date-label" style="font-size:16px;font-weight:600;margin-bottom:4px">Loading...</h3>
+            <p style="font-size:13px;color:var(--text-muted)">Click a day on the calendar to view or add goals</p>
+          </div>
+
+          <!-- Add Task Form -->
+          <div class="card" style="margin-bottom:16px">
+            <form id="add-task-form" class="add-task-form">
+              <div class="form-row">
+                <input type="text" id="task-input" class="task-input" placeholder="Add a new goal..." required autocomplete="off" />
+              </div>
+              <div class="form-row" style="gap:8px">
+                <select id="task-priority" class="task-select">
+                  <option value="low">Low</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="high">High</option>
+                </select>
+                <button type="submit" class="btn btn-primary btn-sm" style="flex-shrink:0">+ Add Goal</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Task List -->
+          <div class="card task-list-card">
+            <div id="task-list">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 Amenyo Ammishaddai Akeseh</span>
+      <div class="footer-links">
+        <a href="https://github.com/likkleSaint" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/amenyo-akeseh-9911b1350" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:amenyoakese99@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="goals.js"></script>
+</body>
+</html>

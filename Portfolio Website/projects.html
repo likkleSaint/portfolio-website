@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — Amenyo A. Akeseh</title>
+  <meta name="description" content="Browse projects by Amenyo Ammishaddai Akeseh — web development, Python, and more." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────── -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">AA</a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a href="goals.html">Goals</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀️</button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Page Content ────────────────────────────────────── -->
+  <div class="page">
+    <div class="container">
+
+      <!-- Page Title -->
+      <div class="page-title fade-in">
+        <h1>My Projects</h1>
+        <p>A collection of things I've built, explored, and experimented with. More coming soon!</p>
+      </div>
+
+      <!-- Tag Filter -->
+      <div class="filter-bar" id="filter-bar">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid" id="projects-grid">
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2026 Amenyo Ammishaddai Akeseh</span>
+      <div class="footer-links">
+        <a href="https://github.com/likkleSaint" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/amenyo-akeseh-9911b1350" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:amenyoakese99@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const projects = await loadJSON('data/projects.json');
+      const grid = document.getElementById('projects-grid');
+      renderProjects(projects, grid);
+      setupTagFilter(projects, grid);
+    });
+  </script>
+</body>
+</html>

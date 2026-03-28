@@ -1,0 +1,41 @@
+[
+  {
+    "id": "portfolio-website",
+    "title": "Portfolio Website",
+    "description": "A modern, responsive personal portfolio website built with vanilla HTML, CSS, and JavaScript. Features dark glassmorphism design, dynamic content loading from JSON, and smooth animations.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "link": "#",
+    "image": "",
+    "date": "2026-03-15"
+  },
+  {
+    "id": "task-manager-app",
+    "title": "Task Manager App",
+    "description": "A productivity application for managing daily tasks with drag-and-drop functionality, priority levels, and local storage persistence.",
+    "tags": [
+      "JavaScript",
+      "CSS",
+      "LocalStorage"
+    ],
+    "link": "#",
+    "image": "",
+    "date": "2026-02-20"
+  },
+  {
+    "id": "weather-dashboard",
+    "title": "Weather Dashboard",
+    "description": "Real-time weather dashboard that fetches data from OpenWeather API. Displays current conditions, 5-day forecast, and location-based weather with beautiful UI.",
+    "tags": [
+      "Python",
+      "API",
+      "Flask"
+    ],
+    "link": "#",
+    "image": "",
+    "date": "2026-01-10"
+  }
+]
