@@ -6,13 +6,22 @@
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  min-block-size: 100%;
+}
+
 body {
   margin: 0;
-  background: var(--color-background);
-  color: var(--color-text-primary);
+  min-block-size: 100svh;
+  background: var(--color-bg);
+  color: var(--color-text);
   font-family: var(--font-family-body);
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
+  font-weight: var(--font-weight-regular);
+  -webkit-font-smoothing: antialiased;
 }
 
 button,
@@ -22,28 +31,54 @@ textarea {
   font: inherit;
 }
 
-main {
-  padding: var(--space-4);
-  overflow-wrap: anywhere;
+h1,
+h2,
+h3,
+p,
+ul,
+ol {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-size: var(--font-size-heading);
+  line-height: var(--line-height-heading);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-heading);
 }
 
 h1 {
-  font-size: var(--font-size-heading);
-  line-height: var(--line-height-heading);
+  font-size: var(--font-size-title);
 }
 
-p {
-  color: var(--color-text-secondary);
+img,
+video,
+svg {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
 }
 
 a {
   color: inherit;
+  text-decoration-thickness: 1px;
   text-underline-offset: var(--space-1);
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
 }
 
 :focus-visible {
   outline: 2px solid var(--color-focus);
-  outline-offset: 4px;
+  outline-offset: var(--space-1);
+}
+
+::selection {
+  background: var(--color-selection-bg);
+  color: var(--color-selection-text);
 }
 
 /* Baseline safeguard for future motion; no animations are introduced here. */

@@ -1,0 +1,88 @@
+.shell {
+  min-block-size: 100svh;
+  max-inline-size: var(--width-page);
+  margin-inline: auto;
+}
+
+.sidebar {
+  display: none;
+  padding: var(--section-space) var(--space-5);
+  background: var(--color-surface);
+  border-inline-end: var(--border-width) solid var(--color-border);
+}
+
+.name {
+  font-weight: var(--font-weight-semibold);
+}
+
+.role,
+.placeholder {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+}
+
+.role {
+  margin-block-start: var(--space-1);
+}
+
+.placeholder {
+  margin-block-start: var(--space-7);
+}
+
+.main {
+  min-inline-size: 0;
+  padding: var(--section-space) var(--page-gutter);
+  overflow-wrap: anywhere;
+}
+
+.main:focus-visible {
+  outline-offset: calc(-1 * var(--space-1));
+}
+
+.content {
+  max-inline-size: var(--width-content);
+}
+
+.content > * + * {
+  margin-block-start: var(--space-5);
+}
+
+/* Standalone page links remain easy to activate without changing inline prose. */
+.content > a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--target-size);
+}
+
+.skipLink {
+  position: absolute;
+  inset-block-start: var(--space-3);
+  inset-inline-start: var(--space-3);
+  z-index: 1;
+  padding: var(--space-3) var(--space-4);
+  min-block-size: var(--target-size);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-small);
+}
+
+.skipLink:not(:focus) {
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  min-block-size: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (min-width: 64rem) {
+  .shell {
+    display: grid;
+    grid-template-columns: var(--width-sidebar) minmax(0, 1fr);
+  }
+
+  .sidebar {
+    display: block;
+  }
+}

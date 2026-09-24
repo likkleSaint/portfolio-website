@@ -21,12 +21,14 @@ The build includes the strict TypeScript check (`tsc -b`).
 ## Source organization
 
 - `src/app/`: route definitions.
+- `src/components/layout/`: shared AppShell and its CSS Module.
 - `src/pages/`: minimal route pages.
 - `src/data/`: repository-owned content; currently one temporary project record.
 - `src/types/`: content contracts.
 - `src/styles/`: semantic grayscale tokens and accessible global defaults.
 
-Add shared components, hooks, and CSS Modules when concrete features need them.
+Global resets live in `global.css`, shared values in `tokens.css`, and layout/page
+styles in CSS Modules. Add hooks and further components when features need them.
 `public/` is currently empty; the generated demo assets have been removed.
 
 ## Routes
@@ -37,4 +39,16 @@ Add shared components, hooks, and CSS Modules when concrete features need them.
 
 React Router uses browser history. A future static host must serve the application
 entry point for direct route requests. Deployment configuration is intentionally
-deferred. No V1 content, redesign, navigation shell, or animation is included.
+deferred. No V1 content, final navigation, or animation is included.
+
+## Shell and themes
+
+The shell provides a keyboard skip link, a desktop sidebar placeholder, and one
+focusable main region shared by all routes. At widths below 64rem, the sidebar is
+removed from layout and the content uses a single column. Scrolling stays with
+the document; no fixed positioning or nested scroll areas are used.
+
+Light grayscale tokens are the default. Setting `data-theme="dark"` on the root
+`html` element selects the dark tokens. There is no theme toggle or stored theme
+preference yet. Reduced-motion safeguards remain global; motion tokens do not
+introduce animations.

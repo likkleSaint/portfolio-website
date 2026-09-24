@@ -1,9 +1,10 @@
 import { AppRoutes } from './app/routes'
+import { AppShell } from './components/layout/AppShell'
 
 export default function App() {
   return (
-    <main>
+    <AppShell>
       <AppRoutes />
-    </main>
+    </AppShell>
   )
 }

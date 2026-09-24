@@ -1,21 +1,19 @@
 import { Link } from 'react-router'
-import { projects } from '../data/projects'
+import styles from './HomePage.module.css'
 
 export function HomePage() {
   return (
     <>
       <title>Home | Portfolio V2</title>
-      <h1>Home</h1>
-      <p>Portfolio V2 foundation</p>
-      <ul>
-        {projects.map((project) => (
-          <li key={project.slug}>
-            <Link to={`/projects/${project.slug}`}>
-              {project.title} (placeholder)
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <header className={styles.intro}>
+        <p className={styles.eyebrow}>Software Engineer</p>
+        <h1>Ammishaddai</h1>
+        <p>
+          Building software and automation systems with a focus on practical
+          engineering.
+        </p>
+      </header>
+      <Link to="/projects/accountability-os">Currently building Accountability OS.</Link>
     </>
   )
 }

@@ -1,0 +1,8 @@
+.intro > * + * {
+  margin-block-start: var(--space-5);
+}
+
+.eyebrow {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+}
