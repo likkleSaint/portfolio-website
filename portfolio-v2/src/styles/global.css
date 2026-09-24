@@ -81,7 +81,7 @@ a:hover {
   color: var(--color-selection-text);
 }
 
-/* Baseline safeguard for future motion; no animations are introduced here. */
+/* Shared safeguard, including navigation disclosure transitions. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

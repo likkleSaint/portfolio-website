@@ -6,3 +6,12 @@
   color: var(--color-text-muted);
   font-size: var(--font-size-small);
 }
+
+.sections > section {
+  padding-block: var(--space-7);
+  scroll-margin-block-start: calc(var(--height-mobile-header) + var(--space-4));
+}
+
+.sections > section > p {
+  margin-block-start: var(--space-4);
+}

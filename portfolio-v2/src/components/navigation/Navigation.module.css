@@ -1,0 +1,79 @@
+.sidebar {
+  display: none;
+  padding: var(--space-7) var(--space-5);
+  background: var(--color-surface);
+  border-inline-end: var(--border-width) solid var(--color-border);
+  overflow-wrap: anywhere;
+}
+
+.name {
+  font-weight: var(--font-weight-semibold);
+}
+
+.role {
+  margin-block-start: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+}
+
+.mobileHeader,
+.dialogHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.mobileHeader {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 1;
+  min-block-size: var(--height-mobile-header);
+  padding: var(--space-3) var(--page-gutter);
+  border-block-end: var(--border-width) solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.menuButton {
+  min-block-size: var(--target-size);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.mobileDialog {
+  inset: 0;
+  margin: 0;
+  inline-size: 100%;
+  max-inline-size: none;
+  block-size: 100dvh;
+  max-block-size: none;
+  padding: var(--space-5) var(--page-gutter);
+  border: 0;
+  background: var(--color-surface);
+  color: var(--color-text);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.dialogHeader h2 {
+  font-size: var(--font-size-heading);
+}
+
+@media (min-width: 64rem) {
+  .sidebar {
+    display: block;
+    position: sticky;
+    inset-block-start: 0;
+    align-self: start;
+    block-size: 100dvh;
+    overflow-y: auto;
+  }
+
+  .mobileHeader {
+    display: none;
+  }
+}

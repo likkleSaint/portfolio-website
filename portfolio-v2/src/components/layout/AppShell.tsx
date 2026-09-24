@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { Navigation } from '../navigation/Navigation'
 import styles from './AppShell.module.css'
 
 interface AppShellProps {
@@ -12,11 +13,7 @@ export function AppShell({ children }: AppShellProps) {
         Skip to main content
       </a>
       <div className={styles.shell}>
-        <aside className={styles.sidebar}>
-          <p className={styles.name}>Ammishaddai</p>
-          <p className={styles.role}>Software Engineer</p>
-          <p className={styles.placeholder}>Navigation coming next</p>
-        </aside>
+        <Navigation />
         <main id="main-content" className={styles.main} tabIndex={-1}>
           <div className={styles.content}>{children}</div>
         </main>

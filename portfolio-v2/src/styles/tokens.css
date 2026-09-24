@@ -36,6 +36,7 @@
   --width-content: 65ch;
   --width-page: 90rem;
   --width-sidebar: 15rem;
+  --height-mobile-header: 4.5rem;
   --page-gutter: clamp(var(--space-4), 4vw, var(--space-8));
   --section-space: clamp(var(--space-7), 6vw, var(--space-9));
   --target-size: 2.75rem;
