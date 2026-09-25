@@ -1,12 +1,63 @@
-import type { Project } from '../types/project'
+﻿import type { ProjectCaseStudy } from '../types/project'
 
-// Temporary record to verify routing; no case-study content has been migrated.
-export const projects: readonly Project[] = [
+export const projects: readonly ProjectCaseStudy[] = [
   {
     slug: 'accountability-os',
     title: 'Accountability OS',
-    summary: 'Project case study placeholder',
+    summary: 'An AI-assisted personal accountability and management system, built around human-approved decisions.',
     status: 'in-development',
-    technologies: [],
+    timeframe: '30-day MVP development program',
+    overview: 'Accountability OS is designed to turn intentions into structured objectives, milestones, commitments, decisions, deadlines, check-ins and evidence. Telegram is the primary interface. The project is an active build; this case study describes its current architecture and planned MVP, not a finished product.',
+    problem: 'An intention alone does not capture the next commitment, the reason behind a decision or evidence of progress. The problem I am working on is connecting those pieces in one accountable system, while keeping consequential decisions under human control.',
+    goals: [
+      'Support ASPIRATION, LEARNING and PROJECT objectives through one core accountability engine.',
+      'Turn conversations into structured proposals that a person can approve, edit or reject.',
+      'Connect commitments and check-ins with decisions and evidence, rather than treating each as an isolated note.',
+      'Extend the core through Aspirations, Learning and Projects modules without duplicating core logic.',
+    ],
+    architecture: [
+      { title: 'Telegram · conversation', description: 'The bot is the primary interface for intentions, check-ins and human review.' },
+      { title: 'n8n · orchestration', description: 'Coordinates the MVP workflows and service integrations around the core accountability engine.' },
+      { title: 'Gemini · analysis and proposals', description: 'Participates in analysis and structured proposal generation. It does not authorize consequential changes.' },
+      { title: 'Human review · authorization checkpoint', description: 'A person approves, edits or rejects a proposal before consequential execution is permitted.' },
+      { title: 'Validation and system execution', description: 'The system validates the authorized action before applying it through a controlled workflow.' },
+      { title: 'PostgreSQL and external integrations', description: 'Neon PostgreSQL holds authoritative state. Approved workflows may also act on external services, such as the planned Google Docs resume integration.' },
+    ],
+    approvalFlow: [
+      { title: 'AI proposes', description: 'Conversation is analyzed and converted into a structured proposal, such as creating a milestone or changing a deadline.' },
+      { title: 'Human reviews', description: 'Approve, edit or reject. An edit is part of review, not permission for the AI to execute independently.' },
+      { title: 'System validates', description: 'The authorized proposal is checked before consequential state can change.' },
+      { title: 'System executes', description: 'An approved, validated action reaches the database or external service; execution can succeed or fail.' },
+    ],
+    proposalStates: ['PENDING', 'APPROVED', 'EDITED', 'REJECTED', 'EXECUTED', 'FAILED'],
+    systemModel: [
+      { title: 'Objectives and milestones', description: 'ASPIRATION, LEARNING and PROJECT share a common objective model. Milestones remain flat for the MVP.' },
+      { title: 'Commitments and check-ins', description: 'Commitments connect what and when to an objective, milestone, deadline, status and completion outcome. Check-ins record Completed, Partial, Blocked or Didn’t Do It. Rescheduling requires human approval.' },
+      { title: 'Proposals and decision memory', description: 'A discussion can lead to AI detection of a possible decision, then a proposal, approval and a decision record. Records capture the objective, decision, reason, date and status, with links to a related proposal or superseded decision.' },
+      { title: 'Evidence', description: 'Each MVP evidence record belongs to exactly one objective and may reference a milestone. Types include a GitHub repository, live project, certificate, document, portfolio or other evidence.' },
+      { title: 'Career integration · planned workflow', description: 'A completed project or meaningful achievement may lead to a proposed resume update, human review, a Google Docs update and change history. This end-to-end pipeline is not presented as complete.' },
+      { title: 'Database and events', description: 'The schema direction uses UUID primary keys, foreign keys, constraints, indexes, timestamptz and enums or check constraints, with JSONB where flexibility is useful. Representative events include PROPOSAL_APPROVED, DECISION_RECORDED and EVIDENCE_ADDED; system events and logs support the record of activity.' },
+    ],
+    engineeringDecisions: [
+      { title: 'PostgreSQL replaces Airtable as the source of truth', description: 'The current direction places authoritative state in Neon PostgreSQL, with relational constraints and explicit connections between core records.' },
+      { title: 'Keep n8n as the MVP orchestration layer', description: 'A conventional backend is not being introduced for the MVP. Workflow coordination remains in n8n while core state lives in PostgreSQL.' },
+      { title: 'Require approval before consequential mutations', description: 'AI analysis produces proposals rather than direct state changes. Human authorization and validation form an explicit execution boundary.' },
+      { title: 'Generic objectives; One Live Goal as policy', description: 'Objective types share the core model. The former One Live Goal idea is a policy rather than a database schema limitation, leaving room for future modules.' },
+      { title: 'Limit MVP relationships deliberately', description: 'Milestones stay flat. Evidence belongs to one objective, with an optional milestone reference. More elaborate hierarchies and cross-objective evidence are outside this MVP model.' },
+      { title: 'Avoid tight coupling to an AI provider', description: 'Gemini is the current analysis participant. The engineering direction keeps provider-specific integration separate from core proposal, approval and execution concepts.' },
+    ],
+    stack: [
+      { title: 'Interface', description: 'Telegram Bot' },
+      { title: 'Orchestration', description: 'n8n' },
+      { title: 'Data', description: 'PostgreSQL hosted on Neon · authoritative source of truth' },
+      { title: 'AI', description: 'Google Gemini · analysis and proposal generation' },
+      { title: 'Infrastructure', description: 'Docker and AWS EC2' },
+      { title: 'Integration', description: 'Google Docs API · planned resume-update workflow' },
+      { title: 'Source control', description: 'Git and GitHub' },
+    ],
+    statusDetails: 'In development. The MVP follows a 30-day program, with architecture and core systems evolving through controlled implementation. The phases below describe the development plan, not completed milestones. An exact current phase and completion percentage are not asserted here.',
+    phases: ['Foundation', 'Core Engine', 'Human Approval + AI', 'Accountability', 'Learning Module', 'Project Module', 'Career Integration', 'Testing + Hardening'],
+    evidenceNote: 'In development. A public repository link and demo are not available in this case study yet. Architecture descriptions are not evidence of a completed or publicly launched system.',
+    links: [],
   },
 ]
