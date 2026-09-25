@@ -1,12 +1,15 @@
 import { Link } from 'react-router'
+import { NotFoundCharacter } from '../components/not-found/NotFoundCharacter'
+import styles from './NotFoundPage.module.css'
 
 export function NotFoundPage() {
   return (
-    <>
-      <title>Page not found | Portfolio V2</title>
-      <h1>404</h1>
-      <p>Page not found</p>
-      <Link to="/">Back home</Link>
-    </>
+    <div className={styles.page}>
+      <title>404 — Page Not Found | Ammishaddai</title>
+      <NotFoundCharacter />
+      <h1>404 — Page Not Found</h1>
+      <p>Looks like this route leads nowhere.</p>
+      <Link className={styles.homeLink} to="/">Back Home</Link>
+    </div>
   )
 }
