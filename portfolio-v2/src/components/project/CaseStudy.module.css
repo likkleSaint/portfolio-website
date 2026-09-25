@@ -55,6 +55,7 @@
   margin-block-start: var(--space-5);
 }
 
+.section > h3,
 .facts dt,
 .flow h3 {
   font-size: var(--font-size-body);

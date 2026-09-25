@@ -39,7 +39,7 @@
   margin-block-end: var(--space-6);
 }
 
-.sections > section > p {
+.sections > section > p + p {
   margin-block-start: var(--space-4);
 }
 

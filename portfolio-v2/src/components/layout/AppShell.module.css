@@ -5,6 +5,8 @@
 }
 
 .main {
+  /* Keep local folder/puzzle layers below the sticky mobile header. */
+  isolation: isolate;
   scroll-margin-block-start: var(--height-mobile-header);
   min-inline-size: 0;
   padding: var(--section-space) var(--page-gutter);
