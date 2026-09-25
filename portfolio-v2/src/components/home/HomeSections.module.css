@@ -1,0 +1,69 @@
+.group {
+  margin-block-start: var(--space-7);
+}
+
+.group h3,
+.journey h3 {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  letter-spacing: normal;
+}
+
+.familiar {
+  margin-block-start: var(--space-4);
+  padding-inline-start: var(--space-5);
+}
+
+.familiar li + li {
+  margin-block-start: var(--space-1);
+}
+
+.technologyList {
+  margin: var(--space-4) 0 0;
+}
+
+.technologyList > div {
+  display: grid;
+  gap: var(--space-1) var(--space-5);
+  padding-block: var(--space-3);
+}
+
+.technologyList dt {
+  font-weight: var(--font-weight-semibold);
+}
+
+.technologyList dd {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.journey {
+  padding-inline-start: var(--space-5);
+}
+
+.journey li {
+  padding-inline-start: var(--space-2);
+}
+
+.journey li + li {
+  margin-block-start: var(--space-6);
+}
+
+.journey li::marker {
+  color: var(--color-text-muted);
+}
+
+.journey p {
+  margin-block-start: var(--space-2);
+}
+
+.period {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+}
+
+@media (min-width: 40rem) {
+  .technologyList > div {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  }
+}
