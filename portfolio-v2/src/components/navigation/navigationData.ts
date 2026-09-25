@@ -1,3 +1,5 @@
+import { contactLinks } from '../../data/contact'
+
 export type BranchId = 'projects' | 'about' | 'contact'
 export type SectionId = 'home' | 'who-i-am' | 'technologies' | 'journey' | 'projects' | 'contact'
 
@@ -36,15 +38,7 @@ export const navigationBranches: readonly NavigationBranch[] = [
   {
     id: 'contact',
     label: 'Contact',
-    items: [
-      { label: 'Email', href: 'mailto:amenyoakese99@gmail.com', external: true },
-      { label: 'GitHub', href: 'https://github.com/likkleSaint', external: true },
-      {
-        label: 'LinkedIn',
-        href: 'https://www.linkedin.com/in/amenyo-akeseh-9911b1350',
-        external: true,
-      },
-    ],
+    items: contactLinks,
   },
 ]
 

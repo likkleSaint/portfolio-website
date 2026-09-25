@@ -33,7 +33,9 @@ export function useHomeSection() {
         Math.ceil(window.scrollY + window.innerHeight) >= document.documentElement.scrollHeight - 2
       const current = atEnd
         ? positions.at(-1)
-        : positions.find(({ rect }) => rect.bottom > 0 && rect.top < window.innerHeight * 0.65)
+        // Prefer the latest section entering the reading band. A sliver of the
+        // preceding section can remain visible even at the end of the page.
+        : positions.filter(({ rect }) => rect.bottom > 0 && rect.top < window.innerHeight * 0.65).at(-1)
 
       if (current) setObserved({ key: location.key, section: current.id })
     }, { rootMargin: '0px 0px -35% 0px', threshold: [0, 1] })

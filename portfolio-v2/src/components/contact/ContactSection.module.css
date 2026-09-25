@@ -1,0 +1,118 @@
+.eyebrow {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+  text-transform: uppercase;
+  margin-block-end: var(--space-3);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  list-style: none;
+  padding: var(--space-6) 0;
+  margin-block-start: var(--space-5);
+}
+
+.piece {
+  --piece-surface: var(--color-surface);
+  position: relative;
+  min-inline-size: 0;
+  background: var(--piece-surface);
+  border: 1px solid var(--color-border-strong);
+}
+
+.piece:nth-child(even) {
+  --piece-surface: var(--color-surface-secondary);
+}
+
+/* A small connecting tab crosses the seam; the entire rectangular link stays
+   a predictable hit target. Geometry is decorative generated content. */
+.piece:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inline-size: var(--space-5);
+  block-size: var(--space-5);
+  inset-inline-start: calc(50% - var(--space-3));
+  inset-block-end: calc(-1 * var(--space-3) - 1px);
+  border: 1px solid var(--color-border-strong);
+  border-block-start-color: transparent;
+  border-radius: 50%;
+  background: var(--piece-surface);
+  pointer-events: none;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-3);
+  min-block-size: 10rem;
+  block-size: 100%;
+  padding: var(--space-6);
+  text-decoration: none;
+}
+
+.label {
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: var(--space-1);
+}
+
+.link:hover .label {
+  text-decoration-thickness: 2px;
+}
+
+.piece:focus-within {
+  z-index: 2;
+}
+
+.link:focus-visible {
+  outline-offset: calc(-1 * var(--space-2));
+}
+
+@media (min-width: 40rem) {
+  .board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .piece:nth-child(odd)::after {
+    inset-inline-start: auto;
+    inset-inline-end: calc(-1 * var(--space-3) - 1px);
+    inset-block-end: calc(50% - var(--space-3));
+    border-block-start-color: var(--color-border-strong);
+    border-inline-start-color: transparent;
+  }
+}
+
+/* Enhancement is opt-in. Default styles above are the assembled board. */
+@media (min-width: 75rem) and (min-height: 48rem) and (prefers-reduced-motion: no-preference) {
+  .board {
+    padding: var(--space-7) var(--space-6);
+  }
+
+  .board[data-phase] .piece {
+    transition: transform var(--duration-normal) var(--ease-standard);
+  }
+
+  .piece:nth-child(1) { --x: -1rem; --y: -1rem; --angle: -3deg; }
+  .piece:nth-child(2) { --x: 1rem; --y: -0.75rem; --angle: 3deg; }
+  .piece:nth-child(3) { --x: -0.75rem; --y: 1rem; --angle: 2deg; }
+  .piece:nth-child(4) { --x: 1rem; --y: 0.75rem; --angle: -2deg; }
+
+  .board[data-phase='0'] .piece {
+    transform: translate(var(--x), var(--y)) rotate(var(--angle));
+  }
+
+  .board[data-phase='1'] .piece {
+    transform: translate(calc(var(--x) * 0.4), calc(var(--y) * 0.4)) rotate(calc(var(--angle) * 0.4));
+  }
+
+  .board:focus-within .piece {
+    transform: none;
+    transition: none;
+  }
+}
