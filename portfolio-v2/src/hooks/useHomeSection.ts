@@ -7,7 +7,7 @@ export function useHomeSection() {
   const [observed, setObserved] = useState<{ key: string; section: SectionId } | null>(null)
 
   useEffect(() => {
-    if (location.pathname !== '/') return
+    if (location.pathname !== '/' || !('IntersectionObserver' in window)) return
 
     const sections = homeSections.flatMap((id) => {
       const element = document.getElementById(id)
