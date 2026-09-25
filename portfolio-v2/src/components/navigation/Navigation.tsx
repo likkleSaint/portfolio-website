@@ -11,7 +11,7 @@ export function Navigation() {
   const activeBranch: BranchId | null = location.pathname === '/projects/accountability-os'
     ? 'projects'
     : location.pathname === '/' && activeSection !== 'home'
-      ? activeSection === 'contact' ? 'contact' : 'about'
+      ? activeSection === 'contact' ? 'contact' : activeSection === 'projects' ? 'projects' : 'about'
       : null
   const context = `${location.key}:${activeBranch}`
   const [choice, setChoice] = useState<{ context: string; branch: BranchId | null } | null>(null)

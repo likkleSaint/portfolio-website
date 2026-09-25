@@ -1,0 +1,161 @@
+.viewButton {
+  display: none;
+  margin-block-start: var(--space-5);
+  min-block-size: var(--target-size);
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-small);
+  cursor: pointer;
+}
+
+.stage {
+  position: relative;
+  margin-block-start: var(--space-7);
+}
+
+.steps {
+  display: none;
+}
+
+.folders {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--space-7);
+}
+
+.folder {
+  min-inline-size: 0;
+  position: relative;
+  padding: var(--space-6) var(--space-3) var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 0 var(--radius-small) var(--radius-small) var(--radius-small);
+  background: var(--color-surface-secondary);
+}
+
+.tab {
+  position: relative;
+  margin-block-start: calc(-1 * var(--space-6) - var(--space-5));
+  margin-inline-start: calc(-1 * var(--space-3) - 1px);
+  margin-block-end: var(--space-4);
+  inline-size: fit-content;
+  max-inline-size: calc(100% + var(--space-3));
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-block-end: 0;
+  border-radius: var(--space-2) var(--space-2) 0 0;
+  background: var(--color-surface-secondary);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+.sheet {
+  position: relative;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.sheet > * + * {
+  margin-block-start: var(--space-4);
+}
+
+.status {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+}
+
+.sheet a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--target-size);
+}
+
+.cover {
+  padding: var(--space-3) var(--space-5) 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+}
+
+/* Progressive enhancement only: small/short screens and reduced motion use
+   the complete static sequence above, even if the observer cannot initialize. */
+@media (min-width: 75rem) and (min-height: 48rem) and (prefers-reduced-motion: no-preference) {
+  .viewButton { display: inline-block; }
+
+  .stage[data-enhanced] {
+    block-size: calc(100svh + 28rem);
+  }
+
+  [data-enhanced] .steps {
+    display: grid;
+    position: absolute;
+    inset: 0;
+    grid-template-rows: repeat(3, 1fr);
+    pointer-events: none;
+  }
+
+  [data-enhanced] .folders {
+    position: sticky;
+    inset-block-start: var(--space-7);
+    block-size: 32rem;
+    display: block;
+  }
+
+  [data-enhanced] .folder {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    block-size: 15rem;
+    transition: transform var(--duration-normal) var(--ease-standard);
+  }
+
+  [data-enhanced] .folder:first-child {
+    z-index: 2;
+    transform: translateY(-3rem);
+  }
+
+  [data-enhanced] .folder:last-child {
+    transform: translate(0.75rem, 0);
+    inline-size: calc(100% - 0.75rem);
+  }
+
+  [data-enhanced] .sheet {
+    transform: translateY(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform var(--duration-normal) var(--ease-standard), opacity var(--duration-normal) var(--ease-standard);
+  }
+
+  [data-enhanced] .cover {
+    position: absolute;
+    inset: var(--space-7) 0 0;
+    border-block-start: 1px solid var(--color-border);
+    background: var(--color-surface-secondary);
+    padding: var(--space-5);
+    pointer-events: none;
+  }
+
+  [data-phase='1'] .folder:first-child .sheet,
+  [data-phase='2'] .folder:last-child .sheet,
+  [data-enhanced] .folder:focus-within .sheet {
+    transform: translateY(-13rem);
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 3;
+  }
+
+  [data-phase='2'] .folder:first-child {
+    transform: translateY(-5rem) scale(0.97);
+    z-index: 0;
+  }
+
+  [data-enhanced] .folder:focus-within {
+    z-index: 4;
+  }
+
+  [data-enhanced] .folder:focus-within .sheet {
+    transition: none;
+  }
+}

@@ -1,5 +1,5 @@
 export type BranchId = 'projects' | 'about' | 'contact'
-export type SectionId = 'home' | 'who-i-am' | 'technologies' | 'journey' | 'contact'
+export type SectionId = 'home' | 'who-i-am' | 'technologies' | 'journey' | 'projects' | 'contact'
 
 interface NavigationItem {
   label: string
@@ -19,7 +19,10 @@ export const navigationBranches: readonly NavigationBranch[] = [
   {
     id: 'projects',
     label: 'Projects',
-    items: [{ label: 'Accountability OS', href: '/projects/accountability-os' }],
+    items: [
+      { label: 'Project folders', href: '/#projects', section: 'projects' },
+      { label: 'Accountability OS', href: '/projects/accountability-os' },
+    ],
   },
   {
     id: 'about',
@@ -46,7 +49,7 @@ export const navigationBranches: readonly NavigationBranch[] = [
 ]
 
 export const homeSections: readonly SectionId[] = [
-  'home', 'who-i-am', 'technologies', 'journey', 'contact',
+  'home', 'who-i-am', 'technologies', 'journey', 'projects', 'contact',
 ]
 
 export function sectionFromHash(hash: string): SectionId {

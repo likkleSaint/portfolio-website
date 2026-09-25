@@ -1,6 +1,7 @@
 import { Link } from 'react-router'
 import { JourneySection } from '../components/home/JourneySection'
 import { TechnologiesSection } from '../components/home/TechnologiesSection'
+import { ProjectsSection } from '../components/projects/ProjectsSection'
 import styles from './HomePage.module.css'
 
 export function HomePage() {
@@ -49,6 +50,7 @@ export function HomePage() {
         </section>
         <TechnologiesSection />
         <JourneySection />
+        <ProjectsSection />
         <section id="contact" tabIndex={-1} aria-labelledby="contact-title">
           <h2 id="contact-title">Contact</h2>
           <p>Contact experience coming in a later task.</p>
